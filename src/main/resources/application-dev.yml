@@ -1,0 +1,50 @@
+server:
+  port: 8888
+spring:
+  data:
+    mongodb:
+      uri: mongodb://127.0.0.1:27017/db
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/todo_task_dev?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true&verifyServerCertificate=false&useSSL=false
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 97xiaokai
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      initial-size: 50
+      max-active: 200
+      min-idle: 50
+      max-wait: 60000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      max-evictable-idle-time-millis: 900000
+      validation-query: SELECT 1 FROM DUAL
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+  #redis配置
+  redis:
+    database: 1
+    host: 127.0.0.1
+    port: 6379
+    password: 97xiaokai
+    jedis:
+      pool:
+        max-active: 1024
+        max-wait: -1
+        max-idle: 8
+        min-idle: 0
+    timeout: 0
+#mybatis-plus配置控制台打印完整带参数SQL语句
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+logging:
+  level:
+    com.todo.task.web.*.mapper: debug
+minio:
+  endpoint: 'http://127.0.0.1:9000'
+  accessKey: 'QY3DNZI104QX4U9Q0Y4D'
+  secretKey: '5lkuIqngN8E9ROKeCHPo9v6sEmZIDLRw4Hrmnvlq'
+  bucket: 'todotask'
